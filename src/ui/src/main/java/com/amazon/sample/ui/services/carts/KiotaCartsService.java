@@ -30,8 +30,8 @@ import reactor.core.publisher.Mono;
 
 public class KiotaCartsService implements CartsService {
 
-  private CatalogService catalogService;
-  private CartClient cartClient;
+  private final CatalogService catalogService;
+  private final CartClient cartClient;
 
   public KiotaCartsService(
     CartClient cartClient,
@@ -44,15 +44,15 @@ public class KiotaCartsService implements CartsService {
   @Override
   public Mono<Cart> getCart(String sessionId) {
     return this.createCart(
-        this.cartClient.carts().byCustomerId(sessionId).get()
-      );
+      this.cartClient.carts().byCustomerId(sessionId).get()
+    );
   }
 
   @Override
   public Mono<Cart> deleteCart(String sessionId) {
     return this.createCart(
-        this.cartClient.carts().byCustomerId(sessionId).delete()
-      );
+      this.cartClient.carts().byCustomerId(sessionId).delete()
+    );
   }
 
   @Override
@@ -63,7 +63,6 @@ public class KiotaCartsService implements CartsService {
         item.setItemId(p.getId());
         item.setQuantity(quantity);
         item.setUnitPrice(p.getPrice());
-
         return item;
       })
       .flatMap(i ->
@@ -91,9 +90,8 @@ public class KiotaCartsService implements CartsService {
     return Mono.just(cart)
       .flatMapMany(c -> Flux.fromIterable(c.getItems()))
       .flatMap(i ->
-        this.catalogService.getProduct(i.getItemId()).map(p -> {
-            return this.toCartItem(i, p);
-          })
+        this.catalogService.getProduct(i.getItemId())
+          .map(p -> this.toCartItem(i, p))
       )
       .collectList()
       .map(this::toCart);
@@ -108,7 +106,9 @@ public class KiotaCartsService implements CartsService {
       product.getId(),
       item.getQuantity(),
       product.getPrice(),
-      product.getName()
+      product.getName(),
+      product.getImage()
     );
   }
 }
+
