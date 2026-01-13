@@ -1,0 +1,89 @@
+
+
+
+name: Build & Push Orders Image to ECR and Update GitOps
+
+on:
+  push:
+    branches:
+      - prod
+    paths:
+      - "src/orders/**"
+      - ".github/workflows/orders-build.yml"
+
+permissions:
+  id-token: write
+  contents: write
+
+env:
+  AWS_REGION: us-west-2
+  ECR_REPOSITORY: demo-private/orders
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ✅ Checkout APP repo
+      - name: Checkout app repo
+        uses: actions/checkout@v4
+
+      # 🔥 Image tag from commit SHA
+      - name: Set image tag
+        run: echo "IMAGE_TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+      # ✅ AWS Auth (OIDC)
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::119778517587:role/github-actions-ecr-role
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      # ✅ Build image
+      - name: Build Docker image
+        run: docker build -t orders:$IMAGE_TAG ./src/orders
+
+      # ✅ Tag image
+      - name: Tag Docker image
+        run: |
+          docker tag orders:$IMAGE_TAG \
+          119778517587.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
+
+      # ✅ Push image
+      - name: Push Docker image to ECR
+        run: |
+          docker push \
+          119778517587.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
+
+      # ✅ Install yq
+      - name: Install yq
+        run: |
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+          sudo chmod +x /usr/bin/yq
+
+      # ✅ Checkout GITOPS repo
+      - name: Checkout GitOps repo
+        uses: actions/checkout@v4
+        with:
+          repository: iam-alehaider/cloudmart-gitops
+          path: gitops
+          token: ${{ secrets.GITOPS_PAT }}
+
+      # ✅ Update image tag in GitOps values
+      - name: Update image tag in GitOps repo
+        run: |
+          yq -i '.image.tag = env(IMAGE_TAG)' gitops/envs/prod/orders-values.yaml
+
+      # ✅ Commit & push to GitOps repo
+      - name: Commit and push to GitOps repo
+        run: |
+          cd gitops
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add envs/prod/orders-values.yaml
+          git commit -m "Update orders image tag to $IMAGE_TAG"
+          git push
+

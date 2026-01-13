@@ -1,0 +1,93 @@
+
+
+[
+  {
+    "id": "bag",
+    "name": "UrbanTrail Mini Backpack",
+    "description": "Lightweight mini backpack to carry your everyday essentials.",
+    "price": 250,
+    "image": "/assets/img/products/bag.jpg",
+    "tags": ["accessories"]
+  },
+  {
+    "id": "clt",
+    "name": "NovaFlex Hoodie",
+    "description": "A soft, comfortable hoodie perfect for daily wear and cool weather.",
+    "price": 125,
+    "image": "/assets/img/products/clt.jpg",
+    "tags": ["clothing"]
+  },
+  {
+    "id": "dd",
+    "name": "AeroPulse Windbreaker Jacket",
+    "description": "A soft and warm jacket that’s comfortable for everyday wear.",
+    "price": 150,
+    "image": "/assets/img/products/dd.jpg",
+    "tags": ["clothing"]
+  },
+  {
+    "id": "bottle",
+    "name": "Aurora Smart Water Bottle",
+    "description": "Tracks hydration and reminds you to sip, keeping you healthy all day.",
+    "price": 70,
+    "image": "/assets/img/products/bottle.jpg",
+    "tags": ["accessories"]
+  },
+  {
+    "id": "blue",
+    "name": "VoltX Wireless Earbuds",
+    "description": "Wireless earbuds with clear sound and long-lasting battery.",
+    "price": 150,
+    "image": "/assets/img/products/blue.jpg",
+    "tags": ["accessories"]
+  },
+  {
+    "id": "tdd",
+    "name": "GlowNest LED Desk Lamp",
+    "description": "Bright LED desk lamp for reading and night work.",
+    "price": 225,
+    "image": "/assets/img/products/tdd.jpg",
+    "tags": ["accessories"]
+  },
+  {
+    "id": "yummy",
+    "name": "CrunchyBite Granola Bar",
+    "description": "A tasty and healthy snack for any time of the day.",
+    "price": 25,
+    "image": "/assets/img/products/yummy.jpg",
+    "tags": ["food"]
+  },
+  {
+    "id": "frr",
+    "name": "Nerix Toy Car",
+    "description": "A fun and colorful toy car for kids to play and race with.",
+    "price": 1000,
+    "image": "/assets/img/products/frr.png",
+    "tags": ["toys"]
+  },
+  {
+    "id": "carr",
+    "name": "Kairo Toy Car",
+    "description": "A fun and colorful toy car for kids to play and race with.",
+    "price": 1000,
+    "image": "/assets/img/products/carr.jpg",
+    "tags": ["toys"]
+  },
+  {
+    "id": "gll",
+    "name": "LuxeWave Sunglasses",
+    "description": "Stylish sunglasses that protect your eyes from bright sunlight.",
+    "price": 9000,
+    "image": "/assets/img/products/gll.jpg",
+    "tags": ["accessories"]
+  },
+  {
+    "id": "shrt",
+    "name": "ComfortWeave Cotton T-Shirt",
+    "description": "Soft cotton T-shirt, breathable and comfortable for everyday wear.",
+    "price": 50,
+    "image": "/assets/img/products/shrt.png",
+    "tags": ["clothing"]
+  }
+]
+

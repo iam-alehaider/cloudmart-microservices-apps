@@ -1,0 +1,51 @@
+<div
+  class="bg-white text-sm"
+  th:fragment="card (product)"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <a th:href="@{/catalog/{itemId}(itemId=${product.id})}">
+    <img
+      th:src="${product.image}"
+      th:alt="${product.name}"
+      class="w-full h-48 object-cover rounded-lg"
+      loading="lazy"
+    />
+  </a>
+
+  <div class="py-4 product-card">
+    <h3
+      class="text-gray-800 mb-2 text-base hover:text-primary-500 cursor-pointer product-name"
+    >
+      <a
+        th:href="@{/catalog/{itemId}(itemId=${product.id})}"
+        th:text="${product.name}"
+      >
+        Product Name
+      </a>
+    </h3>
+
+    <div class="flex items-center mb-2" aria-hidden="true">
+      <i class="fas fa-star text-gray-300"></i>
+      <i class="fas fa-star text-gray-300"></i>
+      <i class="fas fa-star text-gray-300"></i>
+      <i class="fas fa-star text-gray-300"></i>
+      <i class="fas fa-star text-gray-300"></i>
+    </div>
+
+    <p class="text-gray-600 mb-4 product-price">
+      $<span th:text="${product.price}">0</span>
+    </p>
+
+    <form th:action="@{/cart}" method="POST">
+      <input type="hidden" name="productId" th:value="${product.id}" />
+      <button
+        type="submit"
+        class="w-full bg-primary-500 text-white py-2 rounded-lg hover:bg-primary-700 transition duration-300 add-to-cart"
+      >
+        <i class="fas fa-square-plus"></i>
+        <span th:text="#{button.addtocart}">Add to Cart</span>
+      </button>
+    </form>
+  </div>
+</div>
+
