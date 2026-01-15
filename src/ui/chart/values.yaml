@@ -75,10 +75,10 @@ configMap:
 
 app:
   endpoints:
-    catalog: http://retail-store-catalog:80
-    carts: http://retail-store-cart-carts:80
-    orders: http://retail-store-orders:80
-    checkout: http://retail-store-checkout:80
+    catalog:  http://app-catalog:80
+    carts:    http://app-cart-carts:80
+    orders:   http://app-orders:80
+    checkout: http://app-checkout:80 
   chat:
     enabled: false
     provider: ""
