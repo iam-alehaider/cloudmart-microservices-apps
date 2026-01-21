@@ -49,10 +49,10 @@ cloudmart-microservices-apps/
 │
 └── .github/workflows/      # CI pipelines (GitHub Actions)
 
----
+```
 
 
-## 🚀 CI/CD Flow (Application Pipeline)
+##🚀 CI/CD Flow (Application Pipeline)
 
 This repo handles CI only.
 CD is handled by ArgoCD via GitOps repo.
