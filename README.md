@@ -31,6 +31,9 @@ Each service:
 
 ## 🗂 Repository Structure
 
+
+```text
+
 cloudmart-microservices-apps/
 │
 ├── src/
@@ -49,14 +52,13 @@ cloudmart-microservices-apps/
 ---
 
 
-🚀 CI/CD Flow (Application Pipeline)
+## 🚀 CI/CD Flow (Application Pipeline)
 
 This repo handles CI only.
 CD is handled by ArgoCD via GitOps repo.
 
 🔁 Step-by-Step Flow
 Developer pushes code to prod branch
-
 GitHub Actions pipeline runs:
 Build application
 Build Docker image
@@ -64,11 +66,12 @@ Push image to AWS ECR
 Pipeline updates image tag in GitOps repo
 ArgoCD detects change
 ArgoCD deploys new version to EKS
-
 🎯 Result
 Fully automated deployment using GitOps best practices.
 
-🐳 Docker & Image Strategy
+
+
+## 🐳 Docker & Image Strategy
 
 Each service builds its own Docker image
 Images are pushed to:
@@ -78,58 +81,6 @@ Git commit based / pipeline generated
 Helm charts use:
 Image tag injected by GitOps
 
-
-
-
-### Platform
-
-- AWS VPC with public and private subnets
-- Amazon EKS cluster
-- Managed node groups
-- NGINX Ingress Controller
-- cert-manager (optional TLS)
-- Cluster add-ons via Terraform
-
-### Security
-
-- IAM roles for service accounts (IRSA)
-- GitHub Actions authenticated via AWS OIDC
-- No static AWS keys in CI/CD
-- Least-privilege IAM policies
-
----
-
-## 🔁 GitOps Deployment Model
-
-All Kubernetes deployments are managed using GitOps.
-
-Flow:
-
-Developer Push → GitHub Actions → GitOps Repo → ArgoCD → EKS Cluster
-
-ArgoCD continuously monitors the GitOps repository and syncs changes automatically.
-
-No manual kubectl deployments are used.
-
----
-
-## 🔄 CI/CD Pipeline Flow
-
-Each microservice has its own GitHub Actions workflow.
-
-Pipeline stages:
-
-1. Trigger on push to `prod` branch
-2. Build Docker image
-3. Authenticate to AWS using OIDC
-4. Push image to Amazon ECR
-5. Update image tag in GitOps repository
-6. Commit GitOps change
-7. ArgoCD deploys automatically
-
-This provides continuous delivery with full traceability.
-
----
 
 ## 📦 Container Registry
 
@@ -145,73 +96,66 @@ Each service pushes to its own repository.
 
 ---
 
-## 📁 Repository Structure
+##☸ Kubernetes Deployment (Helm)
 
-This platform uses three functional repositories.
+Each service includes a full Helm chart with:
+✅ Common Features
+Deployment with RollingUpdate
+Readiness & Liveness probes
+Non-root containers
+Read-only root filesystem
+ConfigMaps for configuration
+Optional HPA (Horizontal Pod Autoscaler)
+PodDisruptionBudget
+Topology spread constraints
 
-### 🧱 Infrastructure (Terraform)
+---
+## 🧠 Service-Specific Features
 
-Repo: **retail-store-infra**
+## 🛒 UI Service
 
-Responsible for:
+Ingress with NGINX
+cert-manager TLS (Let’s Encrypt)
+Multi-ingress support
+Optional AI Chat integration (OpenAI / Bedrock)
+Prometheus metrics endpoint
 
-- VPC
-- EKS cluster
-- IAM roles
-- OIDC provider
-- ArgoCD installation
-- Cluster add-ons
+## 📦 Orders Service
+
+Optional PostgreSQL (internal or external)
+Optional RabbitMQ messaging
+Secret auto-generation
+Persistent volume support
+
+## 💳 Checkout Service
+
+Optional Redis backend
+In-memory mode supported
+Prometheus metrics scraping
+
+## 🔐 Security Practices
+
+Dedicated ServiceAccounts
+Pod Security Context:
+runAsNonRoot
+fsGroup: 1000
+Optional AWS Security Group for Pods
+Secrets managed via Kubernetes Secrets
+No hardcoded credentials
 
 ---
 
-### 🚀 Application & CI
+## 📊 Observability
 
-Repo: **retail-store-app**
-
-Contains:
-
-- Microservice source code
-- Dockerfiles
-- Helm charts
-- GitHub Actions pipelines
-
-Responsible for building and publishing images.
-
----
-
-### 🔁 GitOps Deployment State
-
-Repo: **retail-store-gitops**
-
-Contains:
-
-- Helm values
-- Environment configs
-- ArgoCD application definitions
-
-Represents the desired state of Kubernetes.
-
----
-
-## 🎯 Skills Demonstrated
-
-This project demonstrates:
-
-- AWS cloud architecture
-- Kubernetes production deployment
-- Terraform Infrastructure as Code
-- Secure CI/CD using OIDC
-- GitOps operational model
-- Microservices system design
-- Observability-ready workloads
+All services support:
+Prometheus metrics scraping
+Grafana dashboards (from monitoring stack)
+Centralized logging via:
+Promtail → Loki
+Monitoring stack is deployed from cloudmart-infra repo.
 
 ---
 
 ## 👤 Author
 
-Ali Haider  
-IT Infrastructure & Cloud Engineer  
-Linux | AWS | Kubernetes | Terraform | DevOps Automation  
-
-GitHub: https://github.com/iam-alehaider
-# test ci
+Ali Haider DevOps / Cloud Engineer /linux
