@@ -72,6 +72,10 @@ Fully automated deployment using GitOps best practices.
 
 ```
 
+<img width="1536" height="1024" alt="cicd" src="https://github.com/user-attachments/assets/d253bb79-cb36-4ec7-bf6d-d7241485574a" />
+
+
+
 ## 🐳 Docker & Image Strategy
 
 Each service builds its own Docker image
