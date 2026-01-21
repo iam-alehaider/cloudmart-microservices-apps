@@ -52,7 +52,7 @@ cloudmart-microservices-apps/
 ```
 
 
-##🚀 CI/CD Flow (Application Pipeline)
+## 🚀 CI/CD Flow (Application Pipeline)
 
 This repo handles CI only.
 CD is handled by ArgoCD via GitOps repo.
@@ -94,9 +94,9 @@ Private Amazon ECR repositories:
 
 Each service pushes to its own repository.
 
----
 
-##☸ Kubernetes Deployment (Helm)
+
+## ☸ Kubernetes Deployment (Helm)
 
 Each service includes a full Helm chart with:
 ✅ Common Features
@@ -109,26 +109,23 @@ Optional HPA (Horizontal Pod Autoscaler)
 PodDisruptionBudget
 Topology spread constraints
 
----
+
 ## 🧠 Service-Specific Features
 
-## 🛒 UI Service
-
+🛒 UI Service
 Ingress with NGINX
 cert-manager TLS (Let’s Encrypt)
 Multi-ingress support
 Optional AI Chat integration (OpenAI / Bedrock)
 Prometheus metrics endpoint
 
-## 📦 Orders Service
-
+📦 Orders Service
 Optional PostgreSQL (internal or external)
 Optional RabbitMQ messaging
 Secret auto-generation
 Persistent volume support
 
-## 💳 Checkout Service
-
+💳 Checkout Service
 Optional Redis backend
 In-memory mode supported
 Prometheus metrics scraping
@@ -143,7 +140,7 @@ Optional AWS Security Group for Pods
 Secrets managed via Kubernetes Secrets
 No hardcoded credentials
 
----
+
 
 ## 📊 Observability
 
