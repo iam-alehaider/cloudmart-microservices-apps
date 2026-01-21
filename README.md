@@ -61,37 +61,34 @@ cloudmart-microservices-apps/
 
 ## 🚀 CI/CD Flow (Application Pipeline)
 
-This repo handles CI only.
-CD is handled by ArgoCD via GitOps repo.
-```text
+- This repo handles CI only.
+- CD is handled by ArgoCD via GitOps repo.
 
 🔁 Step-by-Step Flow
-Developer pushes code to prod branch.
-GitHub Actions pipeline runs:
-Build application.
-Build Docker image.
-Push image to AWS ECR.
-Pipeline updates image tag in GitOps repo.
-ArgoCD detects change.
-ArgoCD deploys new version to EKS.
-🎯 Result
-Fully automated deployment using GitOps best practices.
+- Developer pushes code to prod branch.
+- GitHub Actions pipeline runs:
+- Build application.
+- Build Docker image.
+- Push image to AWS ECR.
+- Pipeline updates image tag in GitOps repo.
+- ArgoCD detects change.
+- ArgoCD deploys new version to EKS.
+- 🎯 Result Fully automated deployment using GitOps best practices.
 
-```
 
-<img width="1536" height="1024" alt="cicd" src="https://github.com/user-attachments/assets/d253bb79-cb36-4ec7-bf6d-d7241485574a" />
+
 
 
 
 ## 🐳 Docker & Image Strategy
 
-Each service builds its own Docker image
-Images are pushed to:
-Amazon ECR (private)
-Image tags are:
-Git commit based / pipeline generated
-Helm charts use:
-Image tag injected by GitOps
+- Each service builds its own Docker image
+- Images are pushed to:
+- Amazon ECR (private)
+- Image tags are:
+- Git commit based / pipeline generated
+- Helm charts use:
+- Image tag injected by GitOps
 
 
 ## 📦 Container Registry
