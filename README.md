@@ -3,8 +3,9 @@
 This repository contains the source code, Docker configurations, Helm charts, and CI triggers for the CloudMart retail microservices application deployed on AWS EKS using GitOps (ArgoCD).
 
 It works together with:
-Infrastructure Repo: cloudmart-infra (Terraform → EKS, VPC, Addons).
-GitOps Repo: cloudmart-gitops (ArgoCD applications & Helm releases). 
+
+# Infrastructure Repo: cloudmart-infra (Terraform → EKS, VPC, Addons).
+# GitOps Repo: cloudmart-gitops (ArgoCD applications & Helm releases). 
 
 
 ---
