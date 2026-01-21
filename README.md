@@ -8,12 +8,16 @@ It works together with:
 2) GitOps Repo: iam-alehaider/cloudmart-gitops (ArgoCD applications & Helm releases). 
 
 
-<img width="591" height="369" alt="Screenshot 2026-01-13 115811" src="https://github.com/user-attachments/assets/6a0b230b-e8df-4da3-9978-b39e49403362" />
 
 
 ---
 
 ## 🧩 Microservices Architecture
+
+
+<img width="1536" height="1024" alt="E-commerce system architecture diagram" src="https://github.com/user-attachments/assets/6395e762-2561-432e-acaf-3f3ec969ee16" />
+
+
 
 The application is intentionally designed as multiple de-coupled services.
 
