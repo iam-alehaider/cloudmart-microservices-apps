@@ -4,8 +4,8 @@ This repository contains the source code, Docker configurations, Helm charts, an
 
 It works together with:
 
-# Infrastructure Repo: cloudmart-infra (Terraform → EKS, VPC, Addons).
-# GitOps Repo: cloudmart-gitops (ArgoCD applications & Helm releases). 
+1) Infrastructure Repo: iam-alehaider/cloudmart-infra (Terraform → EKS, VPC, Addons).
+2) GitOps Repo: iam-alehaider/cloudmart-gitops (ArgoCD applications & Helm releases). 
 
 
 ---
