@@ -56,20 +56,21 @@ cloudmart-microservices-apps/
 
 This repo handles CI only.
 CD is handled by ArgoCD via GitOps repo.
+```text
 
 🔁 Step-by-Step Flow
-Developer pushes code to prod branch
+Developer pushes code to prod branch.
 GitHub Actions pipeline runs:
-Build application
-Build Docker image
-Push image to AWS ECR
-Pipeline updates image tag in GitOps repo
-ArgoCD detects change
-ArgoCD deploys new version to EKS
+Build application.
+Build Docker image.
+Push image to AWS ECR.
+Pipeline updates image tag in GitOps repo.
+ArgoCD detects change.
+ArgoCD deploys new version to EKS.
 🎯 Result
 Fully automated deployment using GitOps best practices.
 
-
+```
 
 ## 🐳 Docker & Image Strategy
 
