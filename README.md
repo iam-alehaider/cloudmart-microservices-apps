@@ -1,21 +1,12 @@
-# 🛒 Retail Store Cloud-Native Microservices Platform (AWS + EKS + GitOps)
+🛒 CloudMart Microservices Applications & CI
 
-## 📌 Project Overview
+This repository contains the source code, Docker configurations, Helm charts, and CI triggers for the CloudMart retail microservices application deployed on AWS EKS using GitOps (ArgoCD).
 
-This project is a production-style cloud-native microservices platform that simulates
-a real-world retail e-commerce system deployed on AWS using Kubernetes.
+It works together with:
 
-The platform demonstrates modern DevOps and Cloud practices including:
+Infrastructure Repo: cloudmart-infra (Terraform → EKS, VPC, Addons)
+GitOps Repo: cloudmart-gitops (ArgoCD applications & Helm releases) 
 
-- Microservices architecture
-- Kubernetes on Amazon EKS
-- GitOps deployments using ArgoCD
-- Infrastructure as Code using Terraform
-- CI/CD pipelines using GitHub Actions
-- Secure AWS authentication using OIDC (no access keys in CI)
-
-This repository is the **parent documentation repo** that explains the full system
-architecture and workflow.
 
 ---
 
@@ -38,7 +29,57 @@ Each service:
 
 ---
 
-## ☁️ Infrastructure Architecture
+## 🗂 Repository Structure
+
+cloudmart-microservices-apps/
+│
+├── src/
+│   ├── ui/
+│   │   ├── chart/          # Helm chart
+│   │   ├── Dockerfile
+│   │   └── application code
+│   │
+│   ├── catalog/
+│   ├── cart/
+│   ├── orders/
+│   └── checkout/
+│
+└── .github/workflows/      # CI pipelines (GitHub Actions)
+
+---
+
+
+🚀 CI/CD Flow (Application Pipeline)
+
+This repo handles CI only.
+CD is handled by ArgoCD via GitOps repo.
+
+🔁 Step-by-Step Flow
+Developer pushes code to prod branch
+
+GitHub Actions pipeline runs:
+Build application
+Build Docker image
+Push image to AWS ECR
+Pipeline updates image tag in GitOps repo
+ArgoCD detects change
+ArgoCD deploys new version to EKS
+
+🎯 Result
+Fully automated deployment using GitOps best practices.
+
+🐳 Docker & Image Strategy
+
+Each service builds its own Docker image
+Images are pushed to:
+Amazon ECR (private)
+Image tags are:
+Git commit based / pipeline generated
+Helm charts use:
+Image tag injected by GitOps
+
+
+
 
 ### Platform
 
