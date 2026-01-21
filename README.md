@@ -75,6 +75,7 @@ cloudmart-microservices-apps/
 - ArgoCD deploys new version to EKS.
 - 🎯 Result Fully automated deployment using GitOps best practices.
 
+<img width="1016" height="394" alt="Screenshot 2026-01-13 185546" src="https://github.com/user-attachments/assets/65f2483d-af9a-4b19-ba3e-b3f702bf508f" />
 
 
 
