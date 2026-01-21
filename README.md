@@ -101,56 +101,61 @@ Each service pushes to its own repository.
 
 Each service includes a full Helm chart with:
 ✅ Common Features
-Deployment with RollingUpdate
-Readiness & Liveness probes
-Non-root containers
-Read-only root filesystem
-ConfigMaps for configuration
-Optional HPA (Horizontal Pod Autoscaler)
-PodDisruptionBudget
-Topology spread constraints
+
+- Deployment with RollingUpdate
+- Readiness & Liveness probes
+- Non-root containers
+- Read-only root filesystem
+- ConfigMaps for configuration
+- Optional HPA (Horizontal Pod Autoscaler)
+- PodDisruptionBudget
+- Topology spread constraints
 
 
 ## 🧠 Service-Specific Features
 
 🛒 UI Service
-Ingress with NGINX
-cert-manager TLS (Let’s Encrypt)
-Multi-ingress support
-Optional AI Chat integration (OpenAI / Bedrock)
-Prometheus metrics endpoint
+
+- Ingress with NGINX
+- cert-manager TLS (Let’s Encrypt)
+- Multi-ingress support
+- Optional AI Chat integration (OpenAI / Bedrock)
+- Prometheus metrics endpoint
 
 📦 Orders Service
-Optional PostgreSQL (internal or external)
-Optional RabbitMQ messaging
-Secret auto-generation
-Persistent volume support
+
+- Optional PostgreSQL (internal or external)
+- Optional RabbitMQ messaging
+- Secret auto-generation
+- Persistent volume support
 
 💳 Checkout Service
-Optional Redis backend
-In-memory mode supported
-Prometheus metrics scraping
+
+- Optional Redis backend
+- In-memory mode supported
+- Prometheus metrics scraping
 
 ## 🔐 Security Practices
 
-Dedicated ServiceAccounts
-Pod Security Context:
-runAsNonRoot
-fsGroup: 1000
-Optional AWS Security Group for Pods
-Secrets managed via Kubernetes Secrets
-No hardcoded credentials
+- Dedicated ServiceAccounts
+- Pod Security Context:
+- runAsNonRoot
+- fsGroup: 1000
+- Optional AWS Security Group for Pods
+- Secrets managed via Kubernetes Secrets
+- No hardcoded credentials
 
 
 
 ## 📊 Observability
 
-All services support:
-Prometheus metrics scraping
-Grafana dashboards (from monitoring stack)
-Centralized logging via:
-Promtail → Loki
-Monitoring stack is deployed from cloudmart-infra repo.
+ All services support:
+
+- Prometheus metrics scraping
+- Grafana dashboards (from monitoring stack)
+- Centralized logging via:
+- Promtail → Loki
+- Monitoring stack is deployed from cloudmart-infra repo.
 
 ---
 
