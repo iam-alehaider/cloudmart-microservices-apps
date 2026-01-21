@@ -55,6 +55,11 @@ cloudmart-microservices-apps/
 │   └── checkout/
 │
 └── .github/workflows/      # CI pipelines (GitHub Actions)
+    ├── cart-build.yml
+    ├── catalog-build.yml
+    ├── checkout-build.yml
+    ├── orders-build.yml
+    └── ui-build.yml
 
 ```
 
