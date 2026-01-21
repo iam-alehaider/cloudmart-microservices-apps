@@ -1,4 +1,4 @@
-🛒 CloudMart Microservices Applications & CI
+## 🛒 CloudMart Microservices Applications & CI
 
 This repository contains the source code, Docker configurations, Helm charts, and CI triggers for the CloudMart retail microservices application deployed on AWS EKS using GitOps (ArgoCD).
 
