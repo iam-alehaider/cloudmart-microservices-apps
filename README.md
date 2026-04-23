@@ -39,9 +39,9 @@ The CI pipeline in **this repo** builds Docker images and pushes them to ECR. It
 
 ---
 
-## Screenshots & Demo
+## Full GitOps Architecture
 
-### Full GitOps Architecture
+
 ![CloudMart full GitOps architecture](docs/screenshots/gitops-architecture.png)
 > End-to-end flow: source code push → GitHub Actions CI → ECR → ArgoCD → EKS cluster. Shows all three repos and how they interact.
 
